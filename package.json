@@ -1,0 +1,38 @@
+{
+  "name": "mediumm",
+  "description": "Blog template, very inspired by medium.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jojoee/mediumm-template.git"
+  },
+  "keywords": [
+    "medium",
+    "blog",
+    "html",
+    "template",
+    "frontend",
+    "static"
+  ],
+  "author": "Nathachai Thongniran <inid3a@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jojoee/mediumm-template/issues"
+  },
+  "homepage": "https://github.com/jojoee/mediumm-template#readme",
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "mocha": "^2.5.3"
+  },
+  "scripts": {
+    "build": "gulp",
+    "build.watch": "gulp && gulp watch",
+    "test": "mocha test --reporter spec --recursive",
+    "test.watch": "mocha test --reporter spec --recursive --watch"
+  }
+}

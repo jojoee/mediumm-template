@@ -1,0 +1,29 @@
+{
+  "name": "mediumm",
+  "description": "Blog template, very inspired by medium.com",
+  "main": "",
+  "authors": [
+    "Nathachai Thongniran <inid3a@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "medium",
+    "blog",
+    "html",
+    "template",
+    "frontend",
+    "static"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    
+  }
+}
