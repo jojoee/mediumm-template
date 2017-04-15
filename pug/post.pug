@@ -1,0 +1,36 @@
+extends includes/layout.pug
+
+block var
+  -
+    var hasSidebar = false
+    var bodyClass = 'single-post'
+
+block content
+  article
+    header
+      +author(post)
+
+    .inner-entry
+      h2.title #{post.article.title}
+      .summary
+        if post.article.featuredImage
+          .featured-image
+          img(src=`${page.featuredImage}`)
+
+        | !{post.article.content}
+
+        if post.tags
+          .post-tags
+            each tag in post.tags
+              a(href="category.html") #{tag}
+
+    section#comments.comments
+      h2 #{post.comments.length}
+        | responses to
+        | "#{post.article.title}"
+      
+      ol.comment-list
+        each comment in post.comments
+          +commentList(comment)
+
+      +respond()

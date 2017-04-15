@@ -1,0 +1,14 @@
+extends includes/layout.pug
+
+block var
+  -
+    var hasSidebar = false
+    var bodyClass = 'error404'
+
+block content
+  .page-header
+    h1 Not Found
+
+  article
+    .alert.alert-warning  Sorry, but the page you were trying to view does not exist.
+    +searchForm()

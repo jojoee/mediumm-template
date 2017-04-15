@@ -1,0 +1,12 @@
+extends includes/layout.pug
+
+block var
+  -
+    var hasSidebar = true
+    var bodyClass = 'home'
+
+block content
+  each post in posts
+    +post(post)
+
+  +paginated()

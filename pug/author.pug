@@ -1,0 +1,20 @@
+extends includes/layout.pug
+
+block var
+  -
+    var hasSidebar = false
+    var bodyClass = 'author'
+
+block banner
+  .author-banner
+    .container
+      .author-meta.col-xs-9
+        h1.author-name #{author.name}
+        .author-desc #{author.desc}
+      .author-avatar.col-xs-3(style=`background-image: url("${author.image}");`)
+
+block content
+  each post in posts
+    +post(post)
+
+  +paginated()

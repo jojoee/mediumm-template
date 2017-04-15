@@ -1,0 +1,23 @@
+.posts-navigation-wrap {
+
+  .nav-previous,
+  .nav-next {
+    padding: $space8 0;
+    padding-top: $space7;
+  }
+
+  .nav-previous {
+    float: left;
+  }
+
+  .nav-next {
+    float: right;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+
+  .posts-navigation-wrap {
+    padding: 0 15px;
+  }
+}

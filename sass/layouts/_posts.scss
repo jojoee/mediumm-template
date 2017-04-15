@@ -1,0 +1,190 @@
+/*================================================================ Article
+*/
+
+main > article {
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: $space3 $space3 $space2;
+  margin-bottom: $space2;
+
+  &.sticky {
+
+    .title {
+      color: $accent-color !important;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .categories {
+    line-height: 21px;
+    margin-bottom: $space2;
+
+    .fa-tag {
+      font-size: 19px;
+      padding-top: 2px;
+      margin-right: $space1;
+      color: $gray;
+      float: left;
+    }
+
+    .list {
+      float: left;
+      color: $gray;
+
+      a {
+
+        &:after {
+          content: ','; 
+          margin-right: 3px;
+        }
+
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .inner-entry {
+    position: relative;
+
+    .inner-wrap {
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+    }
+
+    .title {
+      margin: 0;
+      margin-bottom: $space3;
+      font-size: 29px;
+      color: $black;
+      font-weight: 500;
+      font-style: normal;
+      @include text-overflow;
+    }
+
+    .summary {
+
+      p {
+        @include text-overflow;
+      }
+    }
+  }
+
+  .featured-image {
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .read-more {
+    font-size: 12px;
+  }
+
+  .post-tags {
+    @extend .tag-cloud;
+  }
+
+  // content - image
+  figure {
+
+    figcaption {
+      border: 1px solid $border-color;
+      font-size: 14px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.article-author {
+  height: 36px;
+  overflow: hidden;
+  margin-bottom: $space1;
+  position: relative;
+
+  .avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 36px;
+    width: 36px;
+    border-radius: 16px;
+    @include bg-img;
+  }
+
+  .meta {
+    // 36 + 12
+    padding-left: 48px;
+    width: 100%;
+
+    .top {
+      @include text-overflow;
+      height: 20px;
+    }
+
+    .bottom {
+      color: $gray;
+      font-size: 12px;
+    }
+
+    .split {
+
+      &::after {
+        content: '·'
+      }
+    }
+  }
+}
+
+// Hack article border
+// - Single post
+// - Page
+body.single-post,
+body.page {
+
+  main > article {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+// Hack featured image padding
+// - Single post
+body.single-post {
+
+  main > article .featured-image {
+    margin: $space3 0;
+  }
+}
+
+// Hack tag-cloud
+// - Single post
+body.single-post {
+
+  main > article .tag-cloud {
+    margin: $space4 0;
+  }
+}
+
+// Hack main content
+// - Single post
+// - Page
+body.single-post,
+body.page {
+
+  main > article .summary {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}

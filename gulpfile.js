@@ -4,6 +4,13 @@ var browserSync   = require('browser-sync').create();
 var sass          = require('gulp-sass');
 var sourcemaps    = require('gulp-sourcemaps');
 var autoprefixer  = require('gulp-autoprefixer');
+var pug           = require('gulp-pug');
+var clean         = require('gulp-clean');
+var gulpif        = require('gulp-if');
+
+var enabled = {
+  map: false
+};
 
 /*================================================================
  # HELPER
@@ -28,32 +35,50 @@ function handleError(err) {
  # TASK
  ================================================================*/
 
+gulp.task('clean', function(){
+  return gulp.src([
+      './html/*',
+      './css/*'
+    ], {
+      read: false
+    })
+    .pipe(clean());
+});
+
 gulp.task('sass', function() {
   return gulp.src('./sass/*.scss')
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(enabled.map, sourcemaps.init()))
     .pipe(sass({
       'sourceComments': false,
       'outputStyle': 'expanded'
     })).on('error', handleError)
     .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
-    .pipe(sourcemaps.write('.'))
+    .pipe(gulpif(enabled.map, sourcemaps.write('.')))
     .pipe(gulp.dest('./css/'))
-    .pipe(browserSync.stream({
-      'once': true
-    }));
+    .pipe(browserSync.stream());
+});
+
+gulp.task('pug', function() {
+  return gulp.src('./pug/*.pug')
+    .pipe(pug({
+      basedir: './pug/includes/var.pug',
+      pretty: true
+    })).on('error', handleError)
+    .pipe(gulp.dest('./html/'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('serve', function() {
   browserSync.init({
-    'server': './',
-    'open': true
+    server: './',
+    open: true,
   });
 
-  gulp.watch('./sass/*.scss', ['sass']);  
+  gulp.watch('./sass/*.scss', ['sass']);
   gulp.watch('./js/*.js', { interval: 500 }).on('change', browserSync.reload);
-  gulp.watch('./index.html', { interval: 500 }).on('change', browserSync.reload);
+  gulp.watch('./pug/**/*.pug', ['pug']);
 });
 
-gulp.task('build', ['sass']);
+gulp.task('build', ['pug', 'sass']);
 gulp.task('watch', ['serve']);
 gulp.task('default', ['build']);

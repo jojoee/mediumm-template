@@ -1,16 +1,15 @@
-console.log('script.js');
+(function($) {
+  WebFont.load({
+    google: {
+      families: ['Open Sans']
+    }
+  });
 
-function add(a, b) {
-  return a + b;
-}
+  // menu
+  $mobileMenuBtn = $('.mobile-menu-btn');
+  $mobileMenu = $mobileMenuBtn.next();
 
-function del(a, b) {
-  return a - b;
-}
-
-// trick for testing with mocha (in module pattern)
-// http://stackoverflow.com/questions/14205631/how-do-i-test-a-basic-javascript-file-with-mocha
-if (typeof module !== 'undefined' && module.exports != null) {
-  exports.add = add;
-  exports.del = del;
-}
+  $mobileMenuBtn.click(function() {
+    $mobileMenu.toggleClass('active');
+  });
+})(jQuery);

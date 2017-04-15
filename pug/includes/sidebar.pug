@@ -1,0 +1,94 @@
+section.widget.widget-search
+  form.search-form(role='search', method='get', action='index.html')
+    label
+      span.screen-reader-text Search for:
+      input.search-field(type='search', placeholder='Search …', value='', name='s')
+    input.search-submit(type='submit', value='Search')
+
+section.widget.widget-tag-cloud
+  h3 Tags
+  .tag-cloud
+    each tag in tags
+      a(href='tag.html') #{tag}
+
+section.widget.widget-meta
+  h3 Meta
+  ul
+    each meta in metas
+      li
+        a(href='index.html') #{meta}
+
+section.widget.widget-calendar
+  h3 Calendar
+  .calendar-wrap
+    table.calendar
+      caption April 2017
+      thead
+        tr
+          th(scope='col', title='Monday') M
+          th(scope='col', title='Tuesday') T
+          th(scope='col', title='Wednesday') W
+          th(scope='col', title='Thursday') T
+          th(scope='col', title='Friday') F
+          th(scope='col', title='Saturday') S
+          th(scope='col', title='Sunday') S
+      tfoot
+        tr
+          td#prev(colspan='3')
+            a(href='index.html') &laquo; Aug
+          td.pad
+          td#next(colspan='3')
+            a(href='index.html') Jan &raquo;
+      tbody
+        tr
+          td.pad(colspan='5')
+          td 1
+          td 2
+        tr
+          td 3
+          td 4
+          td 5
+          td 6
+          td 7
+          td 8
+          td 9
+        tr
+          td
+            a(href='index.html', aria-label='Posts published on April 10, 2017') 10
+          td 11
+          td 12
+          td 13
+          td#today 14
+          td 15
+          td 16
+        tr
+          td 17
+          td 18
+          td 19
+          td 20
+          td 21
+          td 22
+          td 23
+        tr
+          td 24
+          td 25
+          td 26
+          td 27
+          td 28
+          td 29
+          td 30
+
+section.widget.widget-categories
+  h3 Categories Dropdown
+  label.screen-reader-text(for='cat') Categories Dropdown
+  select(name='cat')
+    option(value='-1') Select Category
+    each cat in categories
+      +option(cat)
+
+section.widget.widget-nav-menu
+  h3 Custom menu
+  .menu-container
+    ul.menu
+      each menu in menus
+        +list(menu)

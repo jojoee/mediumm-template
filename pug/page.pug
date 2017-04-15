@@ -1,0 +1,24 @@
+extends includes/layout.pug
+
+block var
+  -
+    var hasSidebar = false
+    var bodyClass = 'page'
+
+block content
+  .medmbreadcrumb-wrap
+    .container
+      .medmbreadcrumb
+        span(xmlns:v='http://rdf.data-vocabulary.org/#')
+          span(typeof='v:Breadcrumb')
+            a(href='index.html', rel='v:url', property='v:title') Home &raquo; 
+            span About
+
+  article
+    .inner-entry
+      h1.title #{page.title}
+      .summary
+        if page.featuredImage
+          .featured-image
+            img(src=`${page.featuredImage}`)
+        | !{page.content}

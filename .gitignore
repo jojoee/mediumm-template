@@ -2,8 +2,6 @@
 bower_components
 node_modules
 
-dist
-
 # Log
 npm-debug.log
 

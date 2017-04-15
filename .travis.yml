@@ -1,0 +1,19 @@
+sudo: required
+language: node_js
+node_js:
+  - "6"
+cache:
+  yarn: true
+  directories:
+    - bower_components
+    - node_modules
+branches:
+  only:
+    - master
+install:
+  - npm install -g npm@latest
+  - npm install -g yarn bower
+before_script:
+  - npm prune
+script:
+  - npm run validate

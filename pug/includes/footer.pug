@@ -1,0 +1,11 @@
+.footer-sidebar
+  .container
+    section.widget.widget-recent-entries
+      h3 Recent Posts
+      ul
+        each post in recentEntries
+          li
+            a(href='post.html') #{post}
+
+footer.footer-info
+  .container &copy; #{site.year} #{site.url}

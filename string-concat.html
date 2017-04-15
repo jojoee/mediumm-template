@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>String concat</title>
+<style>
+#input,
+#output {
+  float: left;
+  width: 48%;
+  min-height: 500px;
+  border: 1px solid #e2e2e2;
+}
+</style>
+</head>
+<body>
+<button class="btn" data-clipboard-action="cut" data-clipboard-target="#output">
+  Cut to clipboard
+</button>
+
+<textarea name="input" id="input" cols="30" rows="10"></textarea>
+<div id="output"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+<script>
+$input = $('#input');
+$output = $('#output');
+new Clipboard('.btn');
+
+$input.bind('input propertychange', function() {
+  var content = $(this).val();
+  var contentWithoutNewline = content.replace(/\n/g, "");
+
+  $output.text(contentWithoutNewline);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+header.header
+  .container
+    .row
+      .top
+        .site-title.col-md-8
+          a(href='index.html') #{site.title}
+        .search-form-nostyle.col-md-4.hidden-xs.hidden-sm
+          +searchForm()
+
+      nav.nav-primary.hidden-xs
+        .menu-container
+          ul.nav
+            each menu in menus
+              +list(menu)
+
+      nav.nav-primary-mobile.visible-xs
+        button.mobile-menu-btn Menu
+        .menu-testing-menu-container
+          ul.nav
+            each menu in menus
+              +list(menu)

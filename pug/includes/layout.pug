@@ -1,0 +1,29 @@
+include var.pug
+include mixin.pug
+
+block var
+
+if hasSidebar
+  - bodyClass += ' sidebar-primary';
+
+doctype html
+html(lang='en-US', prefix='og: http://ogp.me/ns#')
+  head
+    include head.pug
+
+  body(class=`${bodyClass}`)
+    include header.pug
+    block banner
+
+    .wrap(role='document')
+      .container
+        .content.row
+          main.main
+            block content
+
+          if hasSidebar
+            aside.sidebar
+              include sidebar.pug
+
+    include footer.pug
+    include foot.pug

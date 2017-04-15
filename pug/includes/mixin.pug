@@ -1,0 +1,113 @@
+// static
+mixin paginated()
+  .posts-navigation-wrap.clearfix
+    .wp-pagenavi
+      span.pages Page 2 of 5
+      a.previouspostslink(rel='prev', href='index.html') &laquo;
+      a.page.smaller(href='index.html') 1
+      span.current 2
+      a.page.larger(href='index.html') 3
+      a.page.larger(href='index.html') 4
+      a.page.larger(href='index.html') 5
+      a.nextpostslink(rel='next', href='index.html') &raquo;
+
+// static
+mixin searchForm()
+  form.search-form(role='search', method='get', action='index.html')
+    label
+      span.screen-reader-text Search for:
+      |
+      input.search-field(type='search', placeholder='Search …', value='', name='s')
+    |
+    input.search-submit(type='submit', value='Search')
+
+// static
+mixin respond()
+  #respond.comment-respond
+    h3 Leave a Reply
+    form.comment-form(action='#', method='post', novalidate='')
+      p
+        span Your email address will not be published. Required fields are marked 
+        span.required *
+      p
+        label(for='comment') Comment
+        textarea#comment(name='comment', cols='45', rows='8', maxlength='65525', aria-required='true', required='required')
+      p
+        label(for='author') Name *
+        input#author(name='author', type='text', value='', size='30', maxlength='245', aria-required='true', required='required')
+      p
+        label(for='email') Email *
+        input#email(name='email', type='email', value='', size='30', maxlength='100', aria-describedby='email-notes', aria-required='true', required='required')
+      p
+        label(for='url') Website
+        input#url(name='url', type='url', value='', size='30', maxlength='200')
+      p
+        input#submit.submit(name='submit', type='submit', value='Post Comment')
+
+// half static
+mixin commentList(comment)
+  li.comment
+  article.comment-body
+    header.comment-meta
+      .comment-author
+        img.avatar(src='../image/anonymous-avatar.png', height='32', width='32')
+        |
+        b.fn
+          a.url(href='#', ) Anonymous User
+        | 
+        span.says says:
+      .comment-metadata January 4, 2013 at 10:15 am
+    .comment-content !{comment.content}
+    .reply
+      a.comment-reply-link(rel='nofollow', href='#') Reply
+  
+  if comment.child
+    ol.children
+      each childItem in comment.child
+        +commentList(childItem)
+
+mixin option(item)
+  option #{item.name}
+  if item.child
+    each childItem in item.child
+      +option(childItem)
+
+mixin list(item)
+  li.menu-item
+    a(href='index.html') #{item.name}
+    if item.child
+      ul.sub-menu
+        each childItem in item.child
+          +list(childItem)
+
+mixin author(item)
+  .article-author
+    .avatar(style=`background-image: url("${item.author.image}");`)
+    .meta
+      .top
+        a.fn(href='author.html', rel='author') #{item.author.name}
+      .bottom
+        time.created #{item.article.created}
+        span.split
+        | #{item.article.readMin} min read
+
+mixin post(item)
+  article
+    header
+      .categories.clearfix
+        i.fa.fa-tag(aria-hidden='true')
+        .list
+          each cat in item.categories
+            a.underline.gray(href='category.html') #{cat}
+      +author(item)
+
+    .inner-entry
+      a.inner-wrap(href='post.html')
+      h2.title #{item.article.title}
+      if item.article.featuredImage
+        .featured-image
+          img(src=`${item.article.featuredImage}`)
+      .summary
+        p #{item.article.excerpt}
+
+    a.read-more.gray(href='post.html') Read more...

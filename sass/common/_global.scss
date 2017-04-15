@@ -1,0 +1,277 @@
+html {
+  @include border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  color: $text-color;
+  background-color: $body-bg;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+// Hack background color
+// - Single post
+// - Page
+// - 404
+body.page,
+body.single-post,
+body.error404 {
+  background-color: $white;
+}
+
+a {
+  text-decoration: none;
+  color: $link-color;
+
+  &:active,
+  &:focus,
+  &.visited,
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+
+  &.underline {
+
+    &:active,
+    &:focus,
+    &.visited,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.gray {
+    color: $gray;
+
+    &:active,
+    &:focus,
+    &.visited,
+    &:hover {
+      color: $black;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+textarea {
+  background-color: $input-bg-color;
+  background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
+  border: 1px solid $input-border-color;
+  border-radius: 2px;
+  color: $black;
+  width: 100%;
+  padding: $space1;
+  @include border-box;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+select {
+  width: 100%;
+  border: 1px solid $input-border-color;
+  border-radius: 2px;
+  padding: $space1;
+  background-color: $input-bg-color;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background-color: $white;
+  box-shadow: 3px 3px 3px -3px $btn-shadow-color;
+
+  &:hover,
+  &:focus {
+    background-color: $link-color;
+    color: $white;
+    outline: none;
+  }
+
+  &,
+  &[disabled]:hover,
+  &[disabled]:focus {
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: $space2;
+    @include transition;
+    @include border-box;
+  }
+}
+
+ul {
+  list-style: disc;
+  padding-left: $space1;
+  margin-left: $space2;
+}
+
+blockquote {
+  margin: 0;
+  background-color: $blockquote-bg-color;
+  border-left: 3px solid $blockquote-border-color;
+  padding: $space1 $space2;
+}
+
+hr {
+  border-top: 1px solid $hr-border;
+}
+
+pre {
+  padding: $space2;
+  border-radius: 2px;
+}
+
+pre,
+kbd,
+code,
+samp {
+  background-color: $code-bg-color;
+}
+
+::-webkit-input-placeholder {
+  color: $gray;
+}
+
+:-ms-input-placeholder {
+  color: $gray;
+}
+
+::-moz-placeholder {
+  color: $gray;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  color: $gray;
+  opacity: 1;
+}
+
+/*================================================================ Common
+*/
+
+.text-overflow {
+  @include text-overflow;
+}
+
+/*================================================================ Wrap
+*/
+
+.wrap {
+  padding-top: $space5;
+}
+
+// Hack
+@media (min-width: $screen-md-min) {
+
+  // Content container
+  // - Single post
+  // - Page
+  // - Archive author
+  body.single-post,
+  body.page,
+  body.author {
+
+    .wrap > .container {
+      width: 750px;
+    }
+  }
+
+  // Author banner container
+  body.author {
+
+    .author-banner > .container {
+      width: 750px;
+    }
+  }
+
+  // Wrap padding-top
+  body.single-post {
+
+    .wrap {
+      padding-top: 0;
+    }
+  }
+}
+
+/*================================================================ Grid
+*/
+
+.main {
+  @include make-md-column($main-sm-columns);
+
+  .sidebar-primary & {
+    @include make-md-column($main-sm-columns - $sidebar-sm-columns);
+  }
+}
+
+.sidebar {
+  @include make-md-column($sidebar-sm-columns);
+}
+
+.main,
+.sidebar {
+  margin-bottom: $space4;
+}
+
+@media (max-width: $screen-sm-max) {
+
+  .main {
+    padding: 0;
+
+    .sidebar-primary & {
+      padding: 0;
+    }
+  }
+}
+
+/*================================================================ Content - Page header
+*/
+
+.page-header {
+
+  h1 {
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+
+  .page-header {
+    padding: 0 15px;
+  }
+}
