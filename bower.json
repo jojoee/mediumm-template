@@ -1,7 +1,7 @@
 {
   "name": "mediumm",
   "description": "Blog template, very inspired by medium.com",
-  "main": "",
+  "main": "css/main.css",
   "authors": [
     "Nathachai Thongniran <inid3a@gmail.com>"
   ],
@@ -14,7 +14,7 @@
     "frontend",
     "static"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/jojoee/mediumm-template",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -28,5 +28,6 @@
     "jeans-kit": "^1.1.2",
     "PACE": "pace#^1.0.2",
     "font-awesome": "^4.7.0"
-  }
+  },
+  "version": "1.0.3"
 }

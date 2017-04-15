@@ -1,6 +1,8 @@
 {
   "name": "mediumm",
+  "version": "1.0.3",
   "description": "Blog template, very inspired by medium.com",
+  "main": "css/main.css",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jojoee/mediumm-template.git"
