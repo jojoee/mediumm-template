@@ -1,9 +1,9 @@
 # Mediumm
 [![Build Status](https://travis-ci.org/jojoee/mediumm-template.svg)](https://travis-ci.org/jojoee/mediumm-template)
-[![Bower Version](https://img.shields.io/bower/v/mediumm-template.svg)](https://bower.io/search/?q=mediumm-template)
-[![Npm Version](https://img.shields.io/npm/v/mediumm-template.svg)](https://www.npmjs.com/package/mediumm-template)
+[![Bower Version](https://img.shields.io/bower/v/mediumm.svg)](https://bower.io/search/?q=mediumm)
+[![Npm Version](https://img.shields.io/npm/v/mediumm.svg)](https://www.npmjs.com/package/mediumm)
 [![Release Version](https://img.shields.io/github/release/jojoee/mediumm-template.svg)](https://github.com/jojoee/mediumm-template/releases)
-[![Downloads](https://img.shields.io/npm/dt/mediumm-template.svg)](https://github.com/jojoee/mediumm-template/archive/master.zip)
+[![Downloads](https://img.shields.io/npm/dt/mediumm.svg)](https://github.com/jojoee/mediumm-template/archive/master.zip)
 Blog template, very inspired by medium.com
 
 ## Demo
