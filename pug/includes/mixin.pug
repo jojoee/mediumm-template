@@ -1,4 +1,4 @@
-// static
+//- static
 mixin paginated()
   .posts-navigation-wrap.clearfix
     .wp-pagenavi
@@ -11,7 +11,7 @@ mixin paginated()
       a.page.larger(href='index.html') 5
       a.nextpostslink(rel='next', href='index.html') &raquo;
 
-// static
+//- static
 mixin searchForm()
   form.search-form(role='search', method='get', action='index.html')
     label
@@ -21,7 +21,7 @@ mixin searchForm()
     |
     input.search-submit(type='submit', value='Search')
 
-// static
+//- static
 mixin respond()
   #respond.comment-respond
     h3 Leave a Reply
@@ -44,7 +44,7 @@ mixin respond()
       p
         input#submit.submit(name='submit', type='submit', value='Post Comment')
 
-// half static
+//- half static
 mixin commentList(comment)
   li.comment
   article.comment-body
