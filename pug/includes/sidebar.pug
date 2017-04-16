@@ -1,7 +1,6 @@
 section.widget.widget-search
   form.search-form(role='search', method='get', action='index.html')
     label
-      span.screen-reader-text Search for:
       input.search-field(type='search', placeholder='Search …', value='', name='s')
     input.search-submit(type='submit', value='Search')
 
@@ -80,7 +79,6 @@ section.widget.widget-calendar
 
 section.widget.widget-categories
   h3 Categories Dropdown
-  label.screen-reader-text(for='cat') Categories Dropdown
   select(name='cat')
     option(value='-1') Select Category
     each cat in categories

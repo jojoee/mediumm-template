@@ -15,10 +15,7 @@ mixin paginated()
 mixin searchForm()
   form.search-form(role='search', method='get', action='index.html')
     label
-      span.screen-reader-text Search for:
-      |
       input.search-field(type='search', placeholder='Search …', value='', name='s')
-    |
     input.search-submit(type='submit', value='Search')
 
 //- static
@@ -42,7 +39,7 @@ mixin respond()
         label(for='url') Website
         input#url(name='url', type='url', value='', size='30', maxlength='200')
       p
-        input#submit.submit(name='submit', type='submit', value='Post Comment')
+        input#submit(name='submit', type='submit', value='Post Comment')
 
 //- half static
 mixin commentList(comment)
@@ -51,11 +48,9 @@ mixin commentList(comment)
     header.comment-meta
       .comment-author
         img.avatar(src='../image/anonymous-avatar.png', height='32', width='32')
-        |
         b.fn
-          a.url(href='#', ) Anonymous User
-        | 
-        span.says says:
+          a.url(href='#') Anonymous User
+        span.says  says:
       .comment-metadata January 4, 2013 at 10:15 am
     .comment-content !{comment.content}
     .reply
