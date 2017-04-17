@@ -44,17 +44,17 @@ mixin respond()
 //- half static
 mixin commentList(comment)
   li.comment
-  article.comment-body
-    header.comment-meta
-      .comment-author
-        img.avatar(src='../image/anonymous-avatar.png', height='32', width='32')
-        b.fn
-          a.url(href='#') Anonymous User
-        span.says  says:
-      .comment-metadata January 4, 2013 at 10:15 am
-    .comment-content !{comment.content}
-    .reply
-      a.comment-reply-link(rel='nofollow', href='#') Reply
+    article.comment-body
+      header.comment-meta
+        .comment-author
+          img.avatar(src='../image/anonymous-avatar.png', height='32', width='32')
+          b.fn
+            a.url(href='#') Anonymous User
+          span.says  says:
+        .comment-metadata January 4, 2013 at 10:15 am
+      .comment-content !{comment.content}
+      .reply
+        a.comment-reply-link(rel='nofollow', href='#') Reply
   
   if comment.child
     ol.children
