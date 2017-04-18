@@ -15,6 +15,15 @@ block banner
 
 block content
   each post in posts
-    +post(post)
+    +post(
+      post.categories,
+      post.author.image,
+      post.author.name,
+      post.article.created,
+      post.article.readMin,
+      post.article.title,
+      post.article.featuredImage,
+      post.article.excerpt
+    )
 
   +paginated()

@@ -42,7 +42,9 @@ mixin respond()
         input#submit(name='submit', type='submit', value='Post Comment')
 
 //- half static
-mixin commentList(comment)
+//- @param string content
+//- @param Array|null child
+mixin commentList(content, child)
   li.comment
     article.comment-body
       header.comment-meta
@@ -52,57 +54,78 @@ mixin commentList(comment)
             a.url(href='#') Anonymous User
           span.says  says:
         .comment-metadata January 4, 2013 at 10:15 am
-      .comment-content !{comment.content}
+      .comment-content !{content}
       .reply
         a.comment-reply-link(rel='nofollow', href='#') Reply
   
-  if comment.child
+  if child
     ol.children
-      each childItem in comment.child
-        +commentList(childItem)
+      each childItem in child
+        +commentList(childItem.content, childItem.child)
 
-mixin option(item)
-  option #{item.name}
-  if item.child
-    each childItem in item.child
-      +option(childItem)
+//- @param string name
+//- @param Array|null child
+mixin option(name, child)
+  option #{name}
+  if child
+    each childItem in child
+      +option(childItem.name, childItem.child)
 
-mixin list(item)
+//- @param string name
+//- @param Array|null child
+mixin list(name, child)
   li.menu-item
-    a(href='index.html') #{item.name}
-    if item.child
+    a(href='index.html') #{name}
+    if child
       ul.sub-menu
-        each childItem in item.child
-          +list(childItem)
+        each childItem in child
+          +list(childItem.name, childItem.child)
 
-mixin author(item)
+//- @param string authorImage
+//- @param string authorName
+//- @param string created
+//- @param string readmin
+mixin articleMeta(authorImage, authorName, created, readmin)
   .article-author
-    .avatar(style=`background-image: url("${item.author.image}");`)
+    .avatar(style=`background-image: url("${authorImage}");`)
     .meta
       .top
-        a.fn(href='author.html', rel='author') #{item.author.name}
+        a.fn(href='author.html', rel='author') #{authorName}
       .bottom
-        time.created #{item.article.created}
+        time.created #{created}
         span.split
-        | #{item.article.readMin} min read
+        | #{readmin} min read
 
-mixin post(item)
+//- @param Array|null categories
+//- @param string authorImage
+//- @param string authorName
+//- @param string created
+//- @param string readmin
+//- @param string title
+//- @param string featuredImage
+//- @param string excerpt
+mixin post(categories, authorImage, authorName, created, readmin, title, featuredImage, excerpt)
   article
     header
       .categories.clearfix
         i.fa.fa-tag(aria-hidden='true')
         .list
-          each cat in item.categories
+          each cat in categories
             a.underline.gray(href='category.html') #{cat}
-      +author(item)
+      +articleMeta(
+        authorImage,
+        authorName,
+        created,
+        readmin
+      )
 
     .inner-entry
       a.inner-wrap(href='post.html')
-      h2.title #{item.article.title}
-      if item.article.featuredImage
+      h2.title #{title}
+      if featuredImage
         .featured-image
-          img(src=`${item.article.featuredImage}`)
+          img(src=`${featuredImage}`)
       .summary
-        p #{item.article.excerpt}
+        p #{excerpt}
 
     a.read-more.gray(href='post.html') Read more...

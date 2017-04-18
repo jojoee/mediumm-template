@@ -11,11 +11,11 @@ header.header
         .menu-container
           ul.nav
             each menu in menus
-              +list(menu)
+              +list(menu.name, menu.child)
 
       nav.nav-primary-mobile.visible-xs
         button.mobile-menu-btn Menu
         .menu-container
           ul.nav
             each menu in menus
-              +list(menu)
+              +list(menu.name, menu.child)

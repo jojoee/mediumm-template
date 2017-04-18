@@ -82,11 +82,11 @@ section.widget.widget-categories
   select(name='cat')
     option(value='-1') Select Category
     each cat in categories
-      +option(cat)
+      +option(cat.name, cat.child)
 
 section.widget.widget-nav-menu
   h3 Custom menu
   .menu-container
     ul.menu
       each menu in menus
-        +list(menu)
+        +list(menu.name, menu.child)

@@ -8,7 +8,12 @@ block var
 block content
   article
     header
-      +author(post)
+      +articleMeta(
+        post.author.image,
+        post.author.name,
+        post.article.created,
+        post.article.readMin
+      )
 
     .inner-entry
       h2.title #{post.article.title}
@@ -31,6 +36,6 @@ block content
       
       ol.comment-list
         each comment in post.comments
-          +commentList(comment)
+          +commentList(comment.content, comment.child)
 
       +respond()
