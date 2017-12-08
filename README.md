@@ -4,6 +4,7 @@
 [![Npm Version](https://img.shields.io/npm/v/mediumm.svg)](https://www.npmjs.com/package/mediumm)
 [![Release Version](https://img.shields.io/github/release/jojoee/mediumm-template.svg)](https://github.com/jojoee/mediumm-template/releases)
 [![Downloads](https://img.shields.io/npm/dt/mediumm.svg)](https://github.com/jojoee/mediumm-template/archive/master.zip)
+
 Blog template, very inspired by medium.com
 
 ## Demo
